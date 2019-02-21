@@ -1,0 +1,42 @@
+@mixin bg-img($url,$size) {
+  background-image: url("#{$url}@2x.png");
+  background-size: $size;
+  //检测是否为3倍图手机
+  @media (min-device-pixel-ratio: 3), (-webkit-min-device-pixel-ratio: 3) {
+    background-image: url("#{$url}@3x.png");
+    background-size: $size;
+  }
+}
+
+@mixin new-height($size) {
+  height: $size/2;
+  //检测是否为3倍图手机
+  @media (min-device-pixel-ratio: 3), (-webkit-min-device-pixel-ratio: 3) {
+    height: $size/3;
+  }
+}
+@mixin border-bottom-1px($color) {
+  position: relative;
+  &:after {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    display: block;
+    content: ' ';
+    font-size: 0;
+    border-top: 0.5px solid $color;
+  }
+	@media (min-device-pixel-ratio: 3), (-webkit-min-device-pixel-ratio: 3) {
+	  &:after {
+	    position: absolute;
+	    left: 0;
+	    bottom: 0;
+	    width: 100%;
+	    display: block;
+	    content: ' ';
+	    font-size: 0;
+	    border-top: 0.34px solid $color;
+	  }
+	}
+}
